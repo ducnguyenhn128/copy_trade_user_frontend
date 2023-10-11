@@ -1,7 +1,11 @@
+.market_trend_table {
+    margin: 20px;
+    width: 70%;
+}
 .market_trend_cell_date {
     width: 20%;
 }
 
 .market_trend_cell_trend {
-    width: 20%;
+    width: 30%;
 }

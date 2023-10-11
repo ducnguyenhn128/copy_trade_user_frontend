@@ -1,9 +1,4 @@
-// import Table from "@mui/material/Table";
-// import TableBody from "@mui/material/TableBody";
-// import TableCell from "@mui/material/TableCell";
-// import TableHead from "@mui/material/TableHead";
-// import TableRow from "@mui/material/TableRow";
-// import TableContainer from "@mui/material/TableContainer";
+
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import React, {useState} from 'react'
 import './styles.css'
@@ -33,7 +28,7 @@ const MarketTrend = () => {
     const addOne = (number) => number + 1
 
     return (
-      <div>
+      <div className='market_trend_table'>
         <h2>SWING TRADE - MARKET TREND</h2>
         <TableContainer component={Paper}>
           <Table>
