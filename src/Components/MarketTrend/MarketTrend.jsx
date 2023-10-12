@@ -28,7 +28,7 @@ const MarketTrend = () => {
       switch (text) {
         case 'TĂNG GIÁ':
           return '#008300';
-        case 'ĐI NGANG':
+        case 'TRUNG LẬP':
           return '#EBD126'; //yellow - P600
         case 'GIẢM GIÁ':
           return '#D91822'; //red - P700
