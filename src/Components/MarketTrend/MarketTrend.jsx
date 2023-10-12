@@ -1,16 +1,28 @@
 
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './styles.css'
+import apiMarketTrend from '../../API/apiMarketTrend.';
 
 
 
 const MarketTrend = () => {
     const [data, setData] = useState([
-      {id: 1, date: '11 - 10 - 2023', trend: 'TĂNG GIÁ', detail: 'a'},
-      {id: 2, date: '10 - 10 - 2023', trend: 'ĐI NGANG', detail: 'b'},
-      {id: 3, date: '09 - 10 - 2023', trend: 'GIẢM GIÁ', detail: 'c'}
+      {id: 1, date: '11 - 10 - 2023', marketTrend: 'TĂNG GIÁ', detail: 'a'},
     ])
+    
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const allMarketTrends = await apiMarketTrend();
+          console.log(allMarketTrends);
+          setData(allMarketTrends)
+        } catch(err) {
+          console.log(err)
+        }
+      }
+      fetchData()
+    }, [])
 
     const getBackgroundColor = (text) => {
       switch (text) {
@@ -26,6 +38,14 @@ const MarketTrend = () => {
     };
 
     const addOne = (number) => number + 1
+
+    const parseDate = (date) => {
+      const year = date.slice(0,4)
+      const month = date.slice(5,7)
+      const day = date.slice(8,10)
+      const formatedDate = day + '-' + month + '-' + year
+      return formatedDate
+    }
 
     return (
       <div className='market_trend_table'>
@@ -45,13 +65,13 @@ const MarketTrend = () => {
                   <TableCell 
                     className="market_trend_cell_date" 
                   >
-                      {row.date}
+                      {parseDate(row.date)}
                       {/* {addOne(row.id)} */}
                   </TableCell>
                   <TableCell 
                     className="market_trend_cell_trend" 
-                    style={{ backgroundColor: getBackgroundColor(row.trend) }}>
-                    {row.trend}
+                    style={{ backgroundColor: getBackgroundColor(row.marketTrend) }}>
+                    {row.marketTrend}
                   </TableCell>
                   <TableCell className="market_trend_cell_detail">
                     {row.detail}
